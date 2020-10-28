@@ -31,6 +31,18 @@ class User_model extends CI_Model{
         return $query->row();
     }
 
+    //login user
+    public function login($username, $password)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where(array( 'username'  => $username,
+                                'password'  => SHA1($password)));
+        $this->db->order_by('id_user', 'desc');
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     //tambah
     public function tambah($data)
     {
