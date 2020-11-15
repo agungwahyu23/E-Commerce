@@ -25,6 +25,38 @@
               <p>DASHBOARD</p>
             </a>
           </li>
+
+          <!-- MENU PRODUK -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-sitemap"></i>
+              <p>
+                PRODUK
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('admin/produk') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-table"></i>
+                  <p>Data Produk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('admin/produk/tambah') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-plus"></i>
+                  <p>Tambah Produk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('admin/kategori') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-tags"></i>
+                  <p>Kategori Produk</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <!-- MENU USER -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

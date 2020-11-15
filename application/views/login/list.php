@@ -27,19 +27,39 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Masukkan Username dan Password</p>
 
-      <form action="../../index3.html" method="post">
+<?php
+  //notif eror
+  echo validation_errors('<div class="alert alert-success">','</div>');
+  //ntif gagal login
+  if ($this->session->flashdata('warning')
+  ) {
+    echo '<div class="alert alert-warning">';
+    echo $this->session->flashdata('warning');
+    echo '</div>';
+  }
+  //notif logout
+  if ($this->session->flashdata('sukses')
+  ) {
+    echo '<div class="alert alert-success">';
+    echo $this->session->flashdata('sukses');
+    echo '</div>';
+  }
+  //open login
+  echo form_open(base_url('login'));
+  
+?>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -61,7 +81,9 @@
           </div>
           <!-- /.col -->
         </div>
-      </form>
+<?php echo 
+form_close();
+?>
 
     <!-- /.login-card-body -->
   </div>
