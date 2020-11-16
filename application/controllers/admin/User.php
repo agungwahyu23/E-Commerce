@@ -58,7 +58,7 @@ class User extends CI_Controller{
             $data = array(  'nama'          =>  $i->post('nama'),
                             'email'         =>  $i->post('email'),
                             'username'      =>  $i->post('username'),
-                            'password'      =>  $i->post('password'),
+                            'password'      =>  SHA1($i->post('password')),
                             'akses_level'   =>  $i->post('akses_level')
                         );
             $this->user_model->tambah($data);
@@ -101,7 +101,7 @@ class User extends CI_Controller{
                             'nama'          =>  $i->post('nama'),
                             'email'         =>  $i->post('email'),
                             'username'      =>  $i->post('username'),
-                            'password'      =>  $i->post('password'),
+                            'password'      =>  SHA1($i->post('password')),
                             'akses_level'   =>  $i->post('akses_level')
                         );
             $this->user_model->edit($data);
