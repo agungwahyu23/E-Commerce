@@ -1,3 +1,7 @@
+<!-- //ckeditor -->
+<script>
+	initSample();
+</script>
 </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

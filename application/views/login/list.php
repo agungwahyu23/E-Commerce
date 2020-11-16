@@ -27,6 +27,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
+
       <p class="login-box-msg">Masukkan username dan password</p>
 
 <?php
@@ -51,11 +52,36 @@ if($this->session->flashdata('sukses')) {
 echo form_open(base_url('login'));
 ?>
 
+
+      <p class="login-box-msg">Masukkan Username dan Password</p>
+
+<?php
+  //notif eror
+  echo validation_errors('<div class="alert alert-success">','</div>');
+  //ntif gagal login
+  if ($this->session->flashdata('warning')
+  ) {
+    echo '<div class="alert alert-warning">';
+    echo $this->session->flashdata('warning');
+    echo '</div>';
+  }
+  //notif logout
+  if ($this->session->flashdata('sukses')
+  ) {
+    echo '<div class="alert alert-success">';
+    echo $this->session->flashdata('sukses');
+    echo '</div>';
+  }
+  //open login
+  echo form_open(base_url('login'));
+  
+?>
+ 288b869b9c50bc75ca028e02834b606958e889b8
         <div class="input-group mb-3">
           <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
@@ -82,8 +108,14 @@ echo form_open(base_url('login'));
           </div>
           <!-- /.col -->
         </div>
+
 <?php echo form_close(); ?>     
 
+
+<?php echo 
+form_close();
+?>
+288b869b9c50bc75ca028e02834b606958e889b8
 
   </div>
 </div>

@@ -8,6 +8,8 @@ class User extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('user_model');
+        //proteksi
+        $this->simple_login->cek_login();
     }
 
     //Data user

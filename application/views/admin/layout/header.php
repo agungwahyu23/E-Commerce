@@ -34,13 +34,19 @@
       <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
+
                 <span class="fas fa-user-circle fa-fw"><?php echo $this->session->userdata('nama'); ?></span>
+
+                <i class="fas fa-user-circle fa-fw"></i><?php echo 
+                $this->session->userdata('nama');
+                 ?>
+ 288b869b9c50bc75ca028e02834b606958e889b8
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#">Activity Log</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                <a class="dropdown-item" href="<?php echo base_url('login/logout') ?>">Logout</a>
             </div>
       </li>
     </ul>
