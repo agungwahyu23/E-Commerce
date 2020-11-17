@@ -81,6 +81,37 @@
               </li>
             </ul>
           </li>
+
+          <!-- Menu Konfogurasi-->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-lock"></i>
+              <p>
+                KONFIGURASI
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('admin/konfigurasi') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-home"></i>
+                  <p>Konfigurasi Umum</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('admin/konfigurasi/logo') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-image"></i>
+                  <p>Konfogirasi Logo</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('admin/konfigurasi/icon') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-home"></i>
+                  <p>Konfigurasi Icon</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           
         </ul>
       </nav>

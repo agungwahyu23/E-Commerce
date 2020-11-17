@@ -237,6 +237,8 @@
 	</div>
 </div>
 
+<!-- Menu Konfigurasi --
+
 <!-- Menu Mobile -->
 <div class="wrap-side-menu">
 	<nav class="side-menu">

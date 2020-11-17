@@ -40,7 +40,6 @@
                 <i class="fas fa-user-circle fa-fw"></i><?php echo 
                 $this->session->userdata('nama');
                  ?>
- 288b869b9c50bc75ca028e02834b606958e889b8
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">Settings</a>
