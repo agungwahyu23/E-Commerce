@@ -12,8 +12,23 @@ Produk Terbaru
 <div class="slick2">
 
 <?php foreach ($produk as $produk) { ?> 
-	
 <div class="item-slick2 p-l-15 p-r-15">
+
+<?php
+ //form untuk memproses belanjaan
+ echo form_open(base_url('belanja/add'));
+
+ //Elemen yang dibawa
+ echo form_hidden('id', $produk->id_produk);
+ echo form_hidden('qty', 1);
+ echo form_hidden('price', $produk->harga);
+ echo form_hidden('name', $produk->nama_produk);
+
+ //Elemen redirect
+
+ echo form_hidden('redirect_page', str_replace('index.php/','',current_url()));
+
+ ?>
 
 
 <!-- Block2 -->
@@ -29,9 +44,9 @@ Produk Terbaru
 
 <div class="block2-btn-addcart w-size1 trans-0-4">
 	<!-- Button  Belanja-->
-	<a href="<?php echo base_url('produk/add/'.$produk->id_produk) ?>" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+	<button type="submit" value="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 		Add to Cart
-	</a>
+	</button>
 </div>
 </div>
 </div>
@@ -46,6 +61,13 @@ IDR <?php echo number_format($produk->harga,'0',',','.') ?>
 </span>
 </div>
 </div>
+
+<?php
+// Cllosing Form
+
+echo form_close();
+?>
+
 </div>
 
 
