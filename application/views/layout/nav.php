@@ -56,76 +56,80 @@ $nav_produk_mobile		= $this->konfigurasi_model->nav_produk();
 <span class="linedivide1"></span>
 
 <div class="header-wrapicon2">
+
+<?php
+//check data belanjaan ada atau tidak
+
+$keranjang	= $this->cart->contents();
+
+
+
+?>
 <img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-<span class="header-icons-noti">0</span>
+<span class="header-icons-noti"> <?php echo count($keranjang) ?> </span>
 
 <!-- Header cart noti -->
 <div class="header-cart header-dropdown">
 	<ul class="header-cart-wrapitem">
+	<?php
+
+		// kalo gaada keranjang belanja
+		if(empty($keranjang)) {
+		 ?>
+			<li class="header-cart-item">
+			<p class="alert alert-success">Keranjang Belanja Kosong</p></li>
+
+	<?php 
+		//kalau ada
+		} else {
+		//Total belanjaan
+			$total_belanja	= 'Rp. '.number_format($this->cart->total(),'0',',','.');
+		//Tampilkan Data belanja
+			foreach ($keranjang as $keranjang) { 
+
+				$id_produk	= $keranjang['id'];
+				//Ambil data produk
+				$produknya	= $this->produk_model->detail($id_produk);
+		?>
+		
 		<li class="header-cart-item">
 			<div class="header-cart-item-img">
-				<img src="<?php echo base_url() ?>assets/template/images/item-cart-01.jpg" alt="IMG">
+				<img src="<?php echo base_url('assets/upload/image/thumbs/'.$produknya->gambar) ?>" alt="<?php echo $keranjang['name'] ?>">
 			</div>
 
 			<div class="header-cart-item-txt">
-				<a href="#" class="header-cart-item-name">
-					White Shirt With Pleat Detail Back
+				<a href="<?php echo base_url('produk/detail/'.$produknya->slug_produk) ?>" class="header-cart-item-name">
+					<?php echo $keranjang['name'] ?>
 				</a>
 
 				<span class="header-cart-item-info">
-					1 x $19.00
+					<?php echo $keranjang['qty'] ?> x Rp. <?php echo number_format($keranjang['price'],'0',',','.') ?>: Rp. <?php echo number_format($keranjang['subtotal'],'0',',','.') ?>
 				</span>
 			</div>
 		</li>
 
-		<li class="header-cart-item">
-			<div class="header-cart-item-img">
-				<img src="<?php echo base_url() ?>assets/template/images/item-cart-02.jpg" alt="IMG">
-			</div>
-
-			<div class="header-cart-item-txt">
-				<a href="#" class="header-cart-item-name">
-					Converse All Star Hi Black Canvas
-				</a>
-
-				<span class="header-cart-item-info">
-					1 x $39.00
-				</span>
-			</div>
-		</li>
-
-		<li class="header-cart-item">
-			<div class="header-cart-item-img">
-				<img src="<?php echo base_url() ?>assets/template/images/item-cart-03.jpg" alt="IMG">
-			</div>
-
-			<div class="header-cart-item-txt">
-				<a href="#" class="header-cart-item-name">
-					Nixon Porter Leather Watch In Tan
-				</a>
-
-				<span class="header-cart-item-info">
-					1 x $17.00
-				</span>
-			</div>
-		</li>
+			<?php 
+			} //tutup foreach keranjang
+			} //tutup if
+			?>
+		
 	</ul>
 
 	<div class="header-cart-total">
-		Total: $75.00
+		Total: <?php echo $total_belanja ?>
 	</div>
 
 	<div class="header-cart-buttons">
 		<div class="header-cart-wrapbtn">
 			<!-- Button -->
-			<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+			<a href="<?php echo base_url('belanja') ?>" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 				View Cart
 			</a>
 		</div>
 
 		<div class="header-cart-wrapbtn">
 			<!-- Button -->
-			<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+			<a href="<?php echo base_url('belanja/checkout') ?>" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 				Check Out
 			</a>
 		</div>
@@ -154,76 +158,81 @@ $nav_produk_mobile		= $this->konfigurasi_model->nav_produk();
 <span class="linedivide2"></span>
 
 <div class="header-wrapicon2">
+
+<?php
+//check data belanjaan ada atau tidak
+
+$keranjang_mobile	= $this->cart->contents();
+
+
+
+?>
 	<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-	<span class="header-icons-noti">0</span>
+	<span class="header-icons-noti"><?php echo count($keranjang_mobile) ?> </span>
 
 	<!-- Header cart noti -->
 	<div class="header-cart header-dropdown">
 		<ul class="header-cart-wrapitem">
+
+
+			<?php
+		// kalo gaada keranjang belanja
+		if (empty($keranjang_mobile)) {
+		 ?>
+			<li class="header-cart-item">
+			<p class="alert alert-success">Keranjang Belanja Kosong</p>
+			</li>
+		<?php 
+		//kalau ada
+		} else {
+		//Total belanjaan
+
+			$total_belanja	= 'Rp. '.number_format($this->cart->total(),'0',',','.');
+		//Tampilkan Data belanja
+			foreach ($keranjang_mobile as $keranjang_mobile) { 
+
+				$id_produk_mobile	= $keranjang_mobile['id'];
+				$produk_mobile 		= $this->produk_model->detail($id_produk_mobile);
+		?>
+		
+
 			<li class="header-cart-item">
 				<div class="header-cart-item-img">
-					<img src="<?php echo base_url() ?>assets/template/images/item-cart-01.jpg" alt="IMG">
+					<img src="<?php echo base_url('assets/upload/image/thumbs/'.$produk_mobile->gambar) ?>" 
+					alt="<?php echo $keranjang_mobile['name'] ?>">
 				</div>
 
 				<div class="header-cart-item-txt">
 					<a href="#" class="header-cart-item-name">
-						White Shirt With Pleat Detail Back
+						<?php echo $keranjang_mobile['name'] ?>
 					</a>
 
 					<span class="header-cart-item-info">
-						1 x $19.00
+						<?php echo $keranjang_mobile['qty'] ?> x Rp. <?php echo number_format($keranjang_mobile['price'],'0',',','.') ?>
 					</span>
 				</div>
 			</li>
 
-			<li class="header-cart-item">
-				<div class="header-cart-item-img">
-					<img src="<?php echo base_url() ?>assets/template/images/item-cart-02.jpg" alt="IMG">
-				</div>
-
-				<div class="header-cart-item-txt">
-					<a href="#" class="header-cart-item-name">
-						Converse All Star Hi Black Canvas
-					</a>
-
-					<span class="header-cart-item-info">
-						1 x $39.00
-					</span>
-				</div>
-			</li>
-
-			<li class="header-cart-item">
-				<div class="header-cart-item-img">
-					<img src="<?php echo base_url() ?>assets/template/images/item-cart-03.jpg" alt="IMG">
-				</div>
-
-				<div class="header-cart-item-txt">
-					<a href="#" class="header-cart-item-name">
-						Nixon Porter Leather Watch In Tan
-					</a>
-
-					<span class="header-cart-item-info">
-						1 x $17.00
-					</span>
-				</div>
-			</li>
+			 <?php } // closing forach 
+			 	   } // closing if
+			 ?>
 		</ul>
 
 		<div class="header-cart-total">
-			Total: $75.00
+			<?php echo $total_belanja ?>
 		</div>
 
 		<div class="header-cart-buttons">
 			<div class="header-cart-wrapbtn">
 				<!-- Button -->
-				<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				<a href="<?php echo base_url('belanja') ?> " class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 					View Cart
 				</a>
 			</div>
 
 			<div class="header-cart-wrapbtn">
 				<!-- Button -->
-				<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+				<a href="<?php echo base_url('belanja/checkout') ?>" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 					Check Out
 				</a>
 			</div>
