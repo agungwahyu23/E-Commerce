@@ -117,7 +117,7 @@ $keranjang	= $this->cart->contents();
 	</ul>
 
 	<div class="header-cart-total">
-		Total: <?php echo $total_belanja ?>
+		Total: <?php if( ! empty($keranjang)) { echo $total_belanja; } ?>
 	</div>
 
 	<div class="header-cart-buttons">

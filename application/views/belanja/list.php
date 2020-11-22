@@ -12,23 +12,31 @@
 <div class="clearfix"></div>
 <br><br>
 
+<?php if($this->session->flashdata('sukses')) {
+	echo '<div class="alert alert-warning">';
+	echo $this->session->flashdata('sukses');
+	echo '</div>';
+} ?>
+
 	<tr class="table-head">
 		<th class="column-1">GAMBAR</th>
 		<th class="column-2">PRODUK</th>
 		<th class="column-3">HARGA</th>
 		<th class="column-4 p-l-70">JUMLAH</th>
-		<th class="column-5">SUBTOTAL</th>
-		<th class="column-6">Action</th>
+		<th class="column-5" width="15%">SUBTOTAL</th>
+		<th class="column-6" width="20%">ACTION</th>
 	</tr>
-
-	
 	<?php 
-
+	
 	//looping data keranjang belanja 
 		foreach ($keranjang as $keranjang) {
+			
 	// Ambil data produk
 			$id_produk	= $keranjang['id'];
 			$produk 	= $this->produk_model->detail($id_produk);
+			// form update keranjang
+	echo form_open(base_url('belanja/update_cart/'.$keranjang['rowid']));
+	
 	?>
 	<tr class="table-row">
 		<td class="column-1">
@@ -60,16 +68,37 @@
 
 		?>
 		</td>
+		<td>
+			<button type="submit" name="update" class="btn btn-success btn-sm">
+				<i class="fa fa-edit"></i> Update
+			</button>
+			<a href="<?php echo base_url('belanja/hapus/'.$keranjang['rowid']) ?>" class="btn btn-warning btn-sm">
+				<i class="fa fa-trash-o"></i> Hapus
+			</a>
+		</td>
 	</tr>
 	<?php
-	} // close looping
+	// echo form close
+	echo form_close();
+	// close looping
+	}
+	
 	?>
 	<tr class="table-row bg-info text-strong style="font-weight: bold; color="white";>
 		<td colspan="4" class="column-1">Total Belanja</td>
-		<td class="column-2">Rp. <?php echo number_format($this->cart->total(),'0',',','.') ?> </td>
-
+		<td colspan="2" class="column-2">Rp. <?php echo number_format($this->cart->total(),'0',',','.') 
+		?></td>
 	</tr>
 </table>
+	<br>
+<p class="pull-right">
+	<a	a href="<?php echo base_url('belanja/hapus') ?>" class="btn btn-danger btn-lg">
+		<i class="fa fa-trash-o"></i> Bersihkan Keranjang Belanja
+	</a>
+	<a	a href="<?php echo base_url('belanja/checkout') ?>" class="btn btn-success btn-lg">
+		<i class="fa fa-shopping-cart"></i> Checkout
+	</a>
+</p>
 </div>
 </div>
 
@@ -81,9 +110,7 @@
 
 <div class="size10 trans-0-4 m-t-10 m-b-10">
 <!-- Button -->
-<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-	Update Cart
-</button>
+
 </div>
 </div>
 
