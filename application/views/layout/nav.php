@@ -77,7 +77,8 @@ $keranjang	= $this->cart->contents();
 		if(empty($keranjang)) {
 		 ?>
 			<li class="header-cart-item">
-			<p class="alert alert-success">Keranjang Belanja Kosong</p></li>
+			<p class="alert alert-success">Keranjang Belanja Kosong</p>
+			</li>
 
 	<?php 
 		//kalau ada

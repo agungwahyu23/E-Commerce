@@ -18,6 +18,7 @@
 		<th class="column-3">HARGA</th>
 		<th class="column-4 p-l-70">JUMLAH</th>
 		<th class="column-5">SUBTOTAL</th>
+		<th class="column-6">Action</th>
 	</tr>
 
 	
@@ -52,7 +53,7 @@
 		</td>
 		<td class="column-5">Rp.  
 
-		<?php
+		<?php 
 		$sub_total = $keranjang['price'] * $keranjang['qty'];
 
 		echo $sub_total;
