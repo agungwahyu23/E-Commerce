@@ -20,6 +20,22 @@ class Transaksi_model extends CI_Model{
         return $query->result();
     }
 
+    //listing all transaksi berdasarkan header
+    public function kode_transaksi($kode_transaksi)
+    {
+        $this->db->select('transaksi.*,
+                           produk.nama_produk,
+                           produk.kode_produk');
+        $this->db->from('transaksi');
+        //join dengan produk ini
+        $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
+        //end join
+        $this->db->where('kode_transaksi', $kode_transaksi);
+        $this->db->order_by('id_transaksi', 'asc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     //detail transaksi
     public function detail($id_transaksi)
     {

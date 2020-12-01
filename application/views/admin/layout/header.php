@@ -35,7 +35,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
 
-                <span class="fas fa-user-circle fa-fw"><?php echo $this->session->userdata('nama'); ?></span>
+                
 
                 <i class="fas fa-user-circle fa-fw"></i><?php echo 
                 $this->session->userdata('nama');

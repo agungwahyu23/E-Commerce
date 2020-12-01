@@ -49,9 +49,18 @@ $nav_produk_mobile		= $this->konfigurasi_model->nav_produk();
 
 <!-- Header Icon -->
 <div class="header-icons">
-<a href="<?php echo base_url('registrasi') ?>" class="header-wrapicon1 dis-block">
-<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-</a>
+	<?php if($this->session->userdata('email')){ ?>
+		<a href="<?php echo base_url('dasbor') ?>" class="header-wrapicon1 dis-block">
+			<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-01.png" class="header-icon1" alt="ICON"> <?php echo 
+			$this->session->userdata('nama_pelanggan');
+			 ?>
+		</a>
+	<?php }else{ ?>
+
+		<a href="<?php echo base_url('registrasi') ?>" class="header-wrapicon1 dis-block">
+			<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+		</a>
+	<?php } ?>
 
 <span class="linedivide1"></span>
 
@@ -59,10 +68,7 @@ $nav_produk_mobile		= $this->konfigurasi_model->nav_produk();
 
 <?php
 //check data belanjaan ada atau tidak
-
 $keranjang	= $this->cart->contents();
-
-
 
 ?>
 <img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">

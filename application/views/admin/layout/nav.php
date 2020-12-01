@@ -57,6 +57,14 @@
             </ul>
           </li>
 
+          <!-- MENU REKENING -->
+          <li class="nav-item">
+            <a href="<?= base_url('admin/rekening') ?>" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign text-aqua"></i>
+              <p>DATA REKENING</p>
+            </a>
+          </li>
+
           <!-- MENU USER -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

@@ -29,11 +29,10 @@ class Belanja extends CI_Controller{
 		$keranjang 	= $this->cart->contents();
 
 		$data  = array(	'title' 	=> 'Keranjang Belanja', 
+						'keranjang'	=> $keranjang,
 						'isi'		=> 'belanja/list'
-
 					  );
 		$this->load->view('layout/wrapper', $data, FALSE);
-
 	}
 
 	// sukses belanja
@@ -181,7 +180,7 @@ public function hapus($rowid ='')
 {
 	if($rowid){
 		//hapus per item keranjang
-		$this->cart->remove($rowid);
+	$this->cart->remove($rowid);
 	$this->session->set_flashdata('sukses', 'Data keranjang belanja telah dihapus');
 	redirect(base_url('belanja'), 'refresh');
 	}else{

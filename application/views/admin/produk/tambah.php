@@ -77,7 +77,7 @@
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-md-2 col-form-label control-label">Keyword (Untuk SEO google)</label>
+	<label class="col-md-2 control-label">Keyword (Untuk SEO google)</label>
 	<div class="col-md-10">
 		<textarea name="keyword" class="form-control" placeholder="Keyword (Untuk SEO google)"
 			value="<?php echo set_value('keyword'); ?>" required></textarea>

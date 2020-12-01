@@ -26,18 +26,18 @@
 		<th class="column-5" width="15%">SUBTOTAL</th>
 		<th class="column-6" width="20%">ACTION</th>
 	</tr>
+
 	<?php 
 	
 	//looping data keranjang belanja 
-		foreach ($keranjang as $keranjang) {
-			
+	foreach ($keranjang as $keranjang) {		
 	// Ambil data produk
-			$id_produk	= $keranjang['id'];
-			$produk 	= $this->produk_model->detail($id_produk);
-			// form update keranjang
+		$id_produk	= $keranjang['id'];
+		$produk 	= $this->produk_model->detail($id_produk);
+	// form update keranjang
 	echo form_open(base_url('belanja/update_cart/'.$keranjang['rowid']));
-	
 	?>
+
 	<tr class="table-row">
 		<td class="column-1">
 			<div class="cart-img-product b-rad-4 o-f-hidden">
@@ -82,7 +82,6 @@
 	echo form_close();
 	// close looping
 	}
-	
 	?>
 	<tr class="table-row bg-info text-strong style="font-weight: bold; color="white";>
 		<td colspan="4" class="column-1">Total Belanja</td>
