@@ -48,7 +48,7 @@ class Transaksi extends CI_Controller {
         $data = array(  'title'              => 'Riwayat belanja',
                         'header_transaksi'   => $header_transaksi,
                         'transaksi'          => $transaksi,
-                        'site'               -> $site
+                        'site'               => $site
                     );
         $this->load->view('admin/transaksi/cetak', $data, FALSE);
     }
