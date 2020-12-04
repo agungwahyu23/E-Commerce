@@ -21,8 +21,16 @@
           <!-- MENU DASHBOARD -->
           <li class="nav-item">
             <a href="<?= base_url('admin/dasbor') ?>" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt text-aqua"></i>
+              <i class="nav-icon fas fa-dashboard text-aqua"></i>
               <p>DASHBOARD</p>
+            </a>
+          </li>
+
+          <!-- MENU TRANSAKSI -->
+          <li class="nav-item">
+            <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
+              <i class="nav-icon fas fa-check text-aqua"></i>
+              <p>TRANSAKSI</p>
             </a>
           </li>
 
