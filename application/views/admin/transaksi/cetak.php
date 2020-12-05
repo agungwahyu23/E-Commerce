@@ -146,5 +146,6 @@
                             <?php $i++; } ?>
                         </tbody>
                     </table>
+                    </div>
 </body>
 </html>
