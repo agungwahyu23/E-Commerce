@@ -45,7 +45,7 @@ if ($this->session->flashdata('sukses')) {
 
 				<a href="<?= base_url('admin/produk/edit/'.$produk->id_produk) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Edit</a>
 
-				<a href="<?= base_url('admin/produk/delete/'.$produk->id_produk) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i>Hapus</a>
+				<?php include('delete.php') ?>
 			</td>
 
 		</tr>

@@ -136,7 +136,6 @@ class Produk_model extends CI_Model{
     }
 
     //Total Kategori
-
     public function total_kategori($id_kategori)
 
     {
@@ -153,9 +152,6 @@ class Produk_model extends CI_Model{
 
 
     //Listing Kategori
-
-
-
      public function listing_kategori()
     {
         $this->db->select(' produk.*,
