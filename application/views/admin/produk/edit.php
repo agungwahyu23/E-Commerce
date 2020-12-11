@@ -9,7 +9,7 @@
 	echo validation_errors('<div class="alert alert-warning">','</div>');
 
 	//form open
-	echo form_open(base_url('admin/produk/edit/'.$produk->id_produk), ' class="form-horizontal"');
+	echo form_open_multipart(base_url('admin/produk/edit/'.$produk->id_produk), ' class="form-horizontal"');
 ?>
 
 <div class="form-group row">
@@ -56,7 +56,7 @@
 	<label class="col-md-2 col-form-label control-label">Berat Produk</label>
 	<div class="col-md-5">
 		<input type="text" name="berat" class="form-control" placeholder="Berat produk"
-			value="<?php echo $produk->harga ?>" required>
+			value="<?php echo $produk->berat ?>" required>
 	</div>
 </div>
 <div class="form-group row">
