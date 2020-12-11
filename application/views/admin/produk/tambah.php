@@ -37,7 +37,6 @@
 				<?php echo $kategori->nama_kategori ?>
 			</option>
 			<?php } ?>
-			<option value="Admin">Admin</option>
 		</select>
 	</div>
 </div>

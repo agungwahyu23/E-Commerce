@@ -108,7 +108,7 @@ class Produk extends CI_Controller{
 
         $valid->set_rules('nama_produk','Nama produk','required', 
                 array( 'required'    =>'%s harus diisi'));
-        $valid->set_rules('kode_produk','Kode produk','required', 
+        $valid->set_rules('kode_produk','Kode produk','required|is_unique[produk.kode_produk]', 
                 array( 'required'    =>'%s harus diisi',
                        'is_unique'   =>'%s sudah ada. Buat kode baru'));
         
@@ -182,25 +182,126 @@ class Produk extends CI_Controller{
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
 
+    //edit coba
+    // public function edit($id_produk)
+    // {
+    //     //ambil data yang akan diedit
+    //     $produk = $this->produk_model->detail($id_produk);
+    //     //ambil data kategori
+    //     $kategori = $this->kategori_model->listing();
+
+    //     //validasi input
+    //     $valid = $this->form_validation;
+
+    //     $valid->set_rules('nama_produk','Nama produk','required', 
+    //              array( 'required'    =>'%s harus diisi'));
+    //     $valid->set_rules('kode_produk','Kode produk','required', 
+    //              array( 'required'    =>'%s harus diisi'));
+
+    //     if ($valid->run()) {
+    //         if (!empty($_FILES["gambar"]["name"])) {
+                
+    //             $config['upload_path']    = './assets/upload/image/';
+    //             $config['allowed_types']  = 'gif|jpg|png|jpeg';
+    //             $config['max_size']       = '2400'; //dalam kb
+    //             $config['max_width']      = '2024';
+    //             $config['max_height']     = '2024';
+                
+    //             $this->load->library('upload', $config);
+
+    //             if ( $this->upload->do_upload('gambar')){
+                    
+    //                 $upload_gambar = array('upload_data' => $this->upload->data());
+
+    //                 //create thumb
+    //                 $config['image_library']    = 'gd2';
+    //                 $config['source_image']     = './assets/upload/image/'.$upload_gambar['upload_data']['file_name'];
+    //                 //lokasi folder gbr thumb
+    //                 $config['new_image']    = './assets/upload/image/thumbs/';
+    //                 $config['create_thumb']     = TRUE;
+    //                 $config['maintain_ratio']   = TRUE;
+    //                 $config['width']            = 250;
+    //                 $config['height']           = 250;
+    //                 $config['thumb_marker']     = '';
+                    
+    //                 $this->load->library('image_lib', $config);
+    //                 $this->image_lib->resize();
+    //                 //end thumb
+
+    //                 $i = $this->input;
+    //                 //slug
+    //                 $slug_produk = url_title($this->input->post('nama_produk').'-'.$this->input->post('kode_produk'),'dash',TRUE);
+    //                 $data = array(  'id_produk'     => $id_produk,
+    //                                 'id_user'       =>  $this->session->userdata('id_user'),
+    //                                 'id_kategori'   =>  $i->post('id_kategori'),
+    //                                 'kode_produk'   =>  $i->post('kode_produk'),
+    //                                 'nama_produk'   =>  $i->post('nama_produk'),
+    //                                 'slug_produk'   =>  $slug_produk,
+    //                                 'keterangan'    =>  $i->post('keterangan'),
+    //                                 'keywords'      =>  $i->post('keywords'),
+    //                                 'harga'         =>  $i->post('harga'),
+    //                                 'stok'          =>  $i->post('stok'),
+    //                                 'gambar'        =>  $upload_gambar['upload_data']['file_name'],
+    //                                 'berat'         =>  $i->post('berat'),
+    //                                 'ukuran'        =>  $i->post('ukuran'),
+    //                                 'status_produk' =>  $i->post('status_produk')
+    //                             );
+    //                 $this->produk_model->edit($data);
+    //                 $this->session->set_flashdata('sukses', 'Data telah diedit dengan gambar');
+    //                 redirect(base_url('admin/produk'),'refresh');
+    //             }
+    //         }else{
+    //                 $i = $this->input;
+    //                 //slug
+    //                 $slug_produk = url_title($this->input->post('nama_produk').'-'.$this->input->post('kode_produk'),'dash',TRUE);
+    //                 $data = array(  'id_produk'     => $id_produk,
+    //                                 'id_user'       =>  $this->session->userdata('id_user'),
+    //                                 'id_kategori'   =>  $i->post('id_kategori'),
+    //                                 'kode_produk'   =>  $i->post('kode_produk'),
+    //                                 'nama_produk'   =>  $i->post('nama_produk'),
+    //                                 'slug_produk'   =>  $slug_produk,
+    //                                 'keterangan'    =>  $i->post('keterangan'),
+    //                                 'keywords'      =>  $i->post('keywords'),
+    //                                 'harga'         =>  $i->post('harga'),
+    //                                 'stok'          =>  $i->post('stok'),
+    //                                 //'gambar'        =>  $upload_gambar['upload_data']['file_name'],
+    //                                 'berat'         =>  $i->post('berat'),
+    //                                 'ukuran'        =>  $i->post('ukuran'),
+    //                                 'status_produk' =>  $i->post('status_produk')
+    //                             );
+    //                 $this->produk_model->edit($data);
+    //                 $this->session->set_flashdata('sukses', 'Data telah diedit tanpa gambar');
+    //                 redirect(base_url('admin/produk'),'refresh');
+    //         }
+    //     }
+    //     $data = array('title'    => 'Edit Produk: '.$produk->nama_produk,
+    //                   'kategori' => $kategori,
+    //                   'produk'   => $produk,
+    //                   'isi'      => 'admin/produk/edit'
+    //                  );
+    //     $this->load->view('admin/layout/wrapper', $data, FALSE);
+    // }
+
+    //====================================================================================//
     //Edit produk
     public function edit($id_produk)
     {
-        //ambil data produk yang mau diedit
+        //ambil data yang akan diedit
         $produk = $this->produk_model->detail($id_produk);
         //ambil data kategori
         $kategori = $this->kategori_model->listing();
+
         //validasi input
         $valid = $this->form_validation;
 
-        $valid->set_rules('nama_produk','Nama Produk','required', 
+        $valid->set_rules('nama_produk','Nama produk','required', 
+                array( 'required'    =>'%s harus diisi'));
+        $valid->set_rules('kode_produk','Kode produk','required', 
                 array( 'required'    =>'%s harus diisi'));
         
-        $valid->set_rules('kode_produk','Kode Produk','required', 
-                array( 'required'    =>'%s harus diisi'));
-
-                
+                        
         if($valid->run()){
-        //cek jika gambar diganti
+            //cek jika ganti gambar
             if(!empty($_FILES['gambar']['name'])){
 
             $config['upload_path']    = './assets/upload/image/';
@@ -210,15 +311,15 @@ class Produk extends CI_Controller{
             $config['max_height']     = '2024';
             
             $this->load->library('upload', $config);
+            
+            if ( !$this->upload->do_upload('gambar')){
+        //end validasi
 
-            if( ! $this->upload->do_upload('gambar')){
-        //End validasi
-
-        $data = array(  'title'     => 'Edit Produk: '.$produk->nama_produk,
-                        'kategori'  => $kategori,
-                        'produk'    => $produk,
-                        'error'     => $this->upload->display_errors(),
-                        'isi'     => 'admin/produk/edit'
+        $data = array('title'    => 'Edit Produk: '.$produk->nama_produk,
+                      'kategori' => $kategori,
+                      'produk'   => $produk,
+                      'error'    => $this->upload->display_errors(),
+                      'isi'      => 'admin/produk/edit'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
         //masuk databese
@@ -241,59 +342,55 @@ class Produk extends CI_Controller{
             //end thumb
 
             $i = $this->input;
-            //slug produk
-            $slug_produk = url_title($this->input->post('nama_produk').'_'.$this->input->post('kode_produk'), 'dash', TRUE);
-
-            $data = array(  'id_produk'       => $id_produk,
-                            'id_user'         => $this->session->userdata('id_user'),
-                            'id_kategori'     => $i->post('id_kategori'),
-                            'kode_produk'     => $i->post('kode_produk'),
-                            'nama_produk'     => $i->post('nama_produk'),
-                            'slug_produk'     => $i->post('slug_produk'),
-                            'keterangan'      => $i->post('keterangan'),
-                            'keywords'        => $i->post('keywords'),
-                            'harga'           => $i->post('harga'),
-                            'stok'            => $i->post('stok'),
-                            //disimpan nama file gambar
-                            'gambar'          => $upload_gambar['upload_data']['file_name'],
-                            'berat'           => $i->post('berat'),
-                            'ukuran'          => $i->post('ukuran'),
-                            'status_produk'   => $i->post('status_produk')
+            //slug
+            $slug_produk = url_title($this->input->post('nama_produk').'-'.$this->input->post('kode_produk'),'dash',TRUE);
+            $data = array(  'id_produk'     => $id_produk,
+                            'id_user'       =>  $this->session->userdata('id_user'),
+                            'id_kategori'   =>  $i->post('id_kategori'),
+                            'kode_produk'   =>  $i->post('kode_produk'),
+                            'nama_produk'   =>  $i->post('nama_produk'),
+                            'slug_produk'   =>  $slug_produk,
+                            'keterangan'    =>  $i->post('keterangan'),
+                            'keywords'      =>  $i->post('keywords'),
+                            'harga'         =>  $i->post('harga'),
+                            'stok'          =>  $i->post('stok'),
+                            'gambar'        =>  $upload_gambar['upload_data']['file_name'],
+                            'berat'         =>  $i->post('berat'),
+                            'ukuran'        =>  $i->post('ukuran'),
+                            'status_produk' =>  $i->post('status_produk')
                         );
             $this->produk_model->edit($data);
-            $this->session->set_flashdata('sukses', 'Data telah diedit');
+            $this->session->set_flashdata('sukses', 'Data telah diedit dengan gambar');
             redirect(base_url('admin/produk'),'refresh');
         }}else{
-            //edit tanpa ganti gambar
+            //edit produk tanpa edit gambar
             $i = $this->input;
-            //slug produk
-            $slug_produk = url_title($this->input->post('nama_produk').'_'.$this->input->post('kode_produk'), 'dash', TRUE);
-
-            $data = array(  'id_produk'       => $id_produk,
-                            'id_user'         => $this->session->userdata('id_user'),
-                            'id_kategori'     => $i->post('id_kategori'),
-                            'kode_produk'     => $i->post('kode_produk'),
-                            'nama_produk'     => $i->post('nama_produk'),
-                            'slug_produk'     => $i->post('slug_produk'),
-                            'keterangan'      => $i->post('keterangan'),
-                            'keywords'        => $i->post('keywords'),
-                            'harga'           => $i->post('harga'),
-                            'stok'            => $i->post('stok'),
-                            //disimpan nama file gambar
-                            //'gambar'        => $upload_gambar['upload_data']['file_name'],
-                            'berat'           => $i->post('berat'),
-                            'ukuran'          => $i->post('ukuran'),
-                            'status_produk'   => $i->post('status_produk')
+            //slug
+            $slug_produk = url_title($this->input->post('nama_produk').'-'.$this->input->post('kode_produk'),'dash',TRUE);
+            $data = array(  'id_produk'     => $id_produk,
+                            'id_user'       =>  $this->session->userdata('id_user'),
+                            'id_kategori'   =>  $i->post('id_kategori'),
+                            'kode_produk'   =>  $i->post('kode_produk'),
+                            'nama_produk'   =>  $i->post('nama_produk'),
+                            'slug_produk'   =>  $slug_produk,
+                            'keterangan'    =>  $i->post('keterangan'),
+                            'keywords'      =>  $i->post('keywords'),
+                            'harga'         =>  $i->post('harga'),
+                            'stok'          =>  $i->post('stok'),
+                            //'gambar'        =>  $upload_gambar['upload_data']['file_name'],
+                            'berat'         =>  $i->post('berat'),
+                            'ukuran'        =>  $i->post('ukuran'),
+                            'status_produk' =>  $i->post('status_produk')
                         );
             $this->produk_model->edit($data);
-            $this->session->set_flashdata('sukses', 'Data telah diedit');
+            $this->session->set_flashdata('sukses', 'Data telah diedit tanpa gambar');
             redirect(base_url('admin/produk'),'refresh');
         }}
         //end masuk database
-        $data = array(  'title'     => 'Edit Produk: '.$produk->nama_produk,
-                        'kategori'  => $kategori,
-                        'produk'    => $produk,
-                        'isi'       => 'admin/produk/edit'
+        $data = array('title'    => 'Edit Produk: '.$produk->nama_produk,
+                      'kategori' => $kategori,
+                      'produk'   => $produk,
+                      'isi'      => 'admin/produk/edit'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
@@ -301,6 +398,9 @@ class Produk extends CI_Controller{
     //Delete produk
     public function delete($id_produk)
     {
+        $produk = $this->produk_model->detail($id_produk);
+        unlink('./assets/upload/image/' .$produk->gambar);
+        unlink('./assets/upload/image/thumbs/' .$produk->gambar);
         $data = array('id_produk' => $id_produk);
         $this->produk_model->delete($data);
         $this->session->set_flashdata('sukses', 'Data berhasil dihapus');
@@ -312,8 +412,8 @@ class Produk extends CI_Controller{
     public function delete_gambar($id_produk,$id_gambar)
     {
         $gambar = $this->produk_model->detail_gambar($id_gambar);
-        unlink(',/assets/uploud/image/' .$gambar->gambar);
-        unlink(',/assets/uploud/image/thumbs/' .$gambar->gambar);
+        unlink('./assets/upload/image/' .$gambar->gambar);
+        unlink('./assets/upload/image/thumbs/' .$gambar->gambar);
         $data = array('id_gambar' => $id_gambar);
         $this->produk_model->delete_gambar($data);
         $this->session->set_flashdata('sukses', 'Data telah dihapus');
