@@ -14,7 +14,7 @@ if ($this->session->flashdata('sukses')) {
 	echo validation_errors('<div class="alert alert-warning">','</div>');
 
 	//form open
-	echo form_open(base_url('admin/konfigurasi/logo'), ' class="form-horizontal"');
+	echo form_open_multipart(base_url('admin/konfigurasi/logo'), ' class="form-horizontal"');
 ?>
 
 <div class="form-group row">
