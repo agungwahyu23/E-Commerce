@@ -22,18 +22,17 @@ class Konfigurasi extends CI_Controller {
                 array( 'required'    =>'%s harus diisi'));
                        
                                 
-        if($valid->run()){
+        if($valid->run()===FALSE){
         //end validasi
 
         $data = array('title'   	=> 'Konfigurasi Website',
-        			'konfigurasi'	=> $konfigurasi,
+        			   'konfigurasi'	=> $konfigurasi,
                       'isi'    		=> 'admin/konfigurasi/list'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
         //masuk databese
         }else{
             $i= $this->input;
-
             $data = array(  'id_konfigurasi'	  => $konfigurasi->id_konfigurasi,
             				'namaweb'			  =>  $i->post('namaweb'),                        
                             'tagline'             =>  $i->post('tagline'),
@@ -49,9 +48,9 @@ class Konfigurasi extends CI_Controller {
                             'rekening_pembayaran' =>  $i->post('rekening_pembayaran'),
                             
                         );
-            $this->konfigurasi_model->tambah($data);
+            $this->konfigurasi_model->edit($data);
             $this->session->set_flashdata('sukses', 'Data telah diupdate');
-            redirect(base_url('admin/Konfigurasi/logo'),'refresh');
+            redirect(base_url('admin/Konfigurasi'),'refresh');
         }
         //end masuk database
 	}
@@ -62,12 +61,11 @@ class Konfigurasi extends CI_Controller {
 		$konfigurasi = $this->konfigurasi_model->listing();
 
 		//validasi input
-        $valid = $this->form_validation;
+		$valid = $this->form_validation;
 
-        $valid->set_rules('namaweb','Nama Website','required', 
-                array( 'required'=>'%s harus diisi'));
-        
-         if($valid->run()){
+		$valid->set_rules('namaweb','Nama Website','required',
+				array('required'=>'%s harus diisi'));
+         if($valid->run()) {
 			// check jika gambar diganti
 			if(!empty($_FILES['logo']['name'])) {
 
@@ -103,6 +101,8 @@ class Konfigurasi extends CI_Controller {
 			$config['height']			= 250;
 			$config['thumb_marker']		= '';
 
+			$this->load->library('image_lib', $config);
+
 			$this->image_lib->resize();
 			//end create thumbnail
 
@@ -127,7 +127,7 @@ class Konfigurasi extends CI_Controller {
 			);
 		$this->konfigurasi_model->edit($data);
 		$this->session->set_flashdata('sukses', 'Data telah diupdate');
-		redirect(base_url('admin/konfogurasi/logo'),'refresh');
+		redirect(base_url('admin/konfigurasi/logo'),'refresh');
 	}}
         	
         //end masuk database
@@ -185,6 +185,8 @@ class Konfigurasi extends CI_Controller {
 			$config['height']			= 250;
 			$config['thumb_marker']		= '';
 
+			//$this->load->library('uploud', $config);
+
 			$this->image_lib->resize();
 			//end create thumbnail
 
@@ -197,7 +199,7 @@ class Konfigurasi extends CI_Controller {
 			);
 		$this->konfigurasi_model->edit($data);
 		$this->session->set_flashdata('sukses', 'Data telah diupdate');
-		redirect(base_url('admin/konfogurasi/icon'),'refresh');
+		redirect(base_url('admin/konfigurasi/icon'),'refresh');
 	}}else{
 		//edit konfigurasi tanpa ganti gambar
 		$i = $this->input;
@@ -209,7 +211,7 @@ class Konfigurasi extends CI_Controller {
 			);
 		$this->konfigurasi_model->edit($data);
 		$this->session->set_flashdata('sukses', 'Data telah diupdate');
-		redirect(base_url('admin/konfogurasi/icon'),'refresh');
+		redirect(base_url('admin/konfigurasi/icon'),'refresh');
 	}}
         	
         //end masuk database
