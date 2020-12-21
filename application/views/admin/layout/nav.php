@@ -117,7 +117,7 @@
               <li class="nav-item">
                 <a href="<?= base_url('admin/konfigurasi/logo') ?>" class="nav-link">
                   <i class="nav-icon fa fa-image"></i>
-                  <p>Konfogirasi Logo</p>
+                  <p>Konfigurasi Logo</p>
                 </a>
               </li>
               <li class="nav-item">

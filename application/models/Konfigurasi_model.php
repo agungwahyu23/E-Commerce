@@ -20,10 +20,9 @@ class Konfigurasi_model extends CI_Model {
 	// Edit
 	public function edit($data)
 	{
-		$this->db-where('id_konfigurasi', $data['id_konfigurasi']);
-		$this->db->update('konfigurasi', $data);
+		$this->db->where('id_konfigurasi' , $data['id_konfigurasi']);
+		$this->db->update('konfigurasi' , $data);
 	}
-
 	//Load menu kategori produk
 
 	public function nav_produk()
