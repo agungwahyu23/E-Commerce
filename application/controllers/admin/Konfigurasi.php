@@ -69,15 +69,15 @@ class Konfigurasi extends CI_Controller {
 			// check jika gambar diganti
 			if(!empty($_FILES['logo']['name'])) {
 
-				$config['uploud_path']		= './assets/uploud/image/';
+				$config['upload_path']		= './assets/upload/image/';
 				$config['allowed_types']	= 'gif|jpg|png|jpeg';
 				$config['max_size']			= '2400';
 				$config['max_width']		= '2024';
 				$config['max_height']		= '2024';
 
-				$this->load->library('uploud', $config);
+				$this->load->library('upload', $config);
 
-				if (! $this->upload->do_uploud('logo')){
+				if (! $this->upload->do_upload('logo')){
 
 				//end validasi
         $data = array('title'  		=> 'Konfigurasi Logo Website',
@@ -92,7 +92,7 @@ class Konfigurasi extends CI_Controller {
 
 			// Create thumbnail gambar
 			$config['image_library']	= 'gd2';
-			$config['source_image']		= './assets/upload/image/'.$upload_gambar['upload_data']['filename'];
+			$config['source_image']		= './assets/upload/image/'.$upload_gambar['upload_data']['file_name'];
 			// Lokasi folder thumnail
 			$config['new_image']		= './assets/upload/image/thumbs/';
 			$config['create_thumb']		= TRUE;
@@ -153,15 +153,15 @@ class Konfigurasi extends CI_Controller {
 			// check jika gambar diganti
 			if(!empty($_FILES['icon']['name'])) {
 
-				$config['uploud_path']		= './assets/uploud/image/';
+				$config['upload_path']		= './assets/upload/image/';
 				$config['allowed_types']	= 'gif|jpg|png|jpeg';
 				$config['max_size']			= '2400';
 				$config['max_width']		= '2024';
 				$config['max_height']		= '2024';
 
-				$this->load->library('uploud', $config);
+				$this->load->library('upload', $config);
 
-				if (! $this->upload->do_uploud('icon')){
+				if (! $this->upload->do_upload('icon')){
 
 				//end validasi
         $data = array('title'   	=> 'Konfigurasi Icon Website',
@@ -176,7 +176,7 @@ class Konfigurasi extends CI_Controller {
 
 			// Create thumbnail gambar
 			$config['image_library']	= 'gd2';
-			$config['source_image']		= './assets/upload/image/'.$upload_gambar['upload_data']['filename'];
+			$config['source_image']		= './assets/upload/image/'.$upload_gambar['upload_data']['file_name'];
 			// Lokasi folder thumnail
 			$config['new_image']		= './assets/upload/image/thumbs/';
 			$config['create_thumb']		= TRUE;
@@ -185,8 +185,7 @@ class Konfigurasi extends CI_Controller {
 			$config['height']			= 250;
 			$config['thumb_marker']		= '';
 
-			//$this->load->library('uploud', $config);
-
+			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
 			//end create thumbnail
 
