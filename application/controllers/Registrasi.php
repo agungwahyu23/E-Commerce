@@ -52,8 +52,8 @@ class Registrasi extends CI_Controller {
                     );
         $this->pelanggan_model->tambah($data);
         // create session login pelanggan 
-        $this->session->set_userdata('email', $i->post('email'));
-        $this->session->set_userdata('nama_pelanggan', $i->post('nama_pelanggan'));
+        // $this->session->set_userdata('email', $i->post('email'));
+        // $this->session->set_userdata('nama_pelanggan', $i->post('nama_pelanggan'));
         // end create session
         $this->session->set_flashdata('sukses', 'Registrasi berhasil');
         redirect(base_url('registrasi/sukses'),'refresh');
