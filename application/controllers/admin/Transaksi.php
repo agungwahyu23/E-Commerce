@@ -38,6 +38,22 @@ class Transaksi extends CI_Controller {
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
 
+    //status
+    public function status($kode_transaksi)
+    {
+        $header_transaksi = $this->header_transaksi_model->kode_transaksi($kode_transaksi);
+
+        $i = $this->input;
+
+        $data = array(  'id_header_transaksi'       => $header_transaksi->id_header_transaksi,
+                        'id_user'                   => $this->session->userdata('id_user'),
+                        'status_bayar'              => 'Success'
+                    );
+        $this->header_transaksi_model->edit($data);
+        $this->session->set_flashdata('sukses', 'Data telah diedit');
+        redirect(base_url('admin/transaksi'),'refresh');
+    }
+
     //Cetak
     public function cetak($kode_transaksi)
     {

@@ -12,7 +12,7 @@
 <table class="table table-bordered">
                         <thead>
                         <tr>
-                                <th width="20%">Nama Pelanggan</th>
+                                <th width="20%">Nama Reseller</th>
                                 <th><?php echo $header_transaksi->nama_pelanggan ?></th>
                             </tr>
                             <tr>
@@ -37,7 +37,7 @@
                                 <td>Bukti Bayar</td>
                                 <td>: <?php if($header_transaksi->bukti_bayar =="") { echo 'Belum ada'; }else {
                                 ?>
-                                        <img src="<?php echo base_url('assets/uploud/image/'.$header_transaksi->
+                                        <img src="<?php echo base_url('assets/upload/image/'.$header_transaksi->
                                         bukti_bayar) ?>" class="img img-thumbnail" width="200"> 
                                  <?php } ?>
                                  </td>
