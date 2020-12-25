@@ -98,6 +98,23 @@
             </ul>
           </li>
 
+      <!-- MENU Pelanggan -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-lock"></i>
+              <p>
+                PELANGGAN
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('admin/pelanggan') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-table"></i>
+                  <p>Data Pelanggan</p>
+                </a>
+              </li>
+
           <!-- Menu Konfogurasi-->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
