@@ -21,12 +21,13 @@ class Pelanggan_model extends CI_Model{
     }
 
     //Login pelanggan
-    public function login($email, $password)
+    public function login($email, $password, $status_pelanggan)
     {
         $this->db->select('*');
         $this->db->from('pelanggan');
-        $this->db->where(array( 'email'     => $email,
-                                'password'  => SHA1($password)));
+        $this->db->where(array( 'email'             => $email,
+                                'password'          => SHA1($password),
+                                'status_pelanggan'  => $status_pelanggan));
         $this->db->order_by('id_pelanggan', 'desc');
         $query = $this->db->get();
         return $query->row();

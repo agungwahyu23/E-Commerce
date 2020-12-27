@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Des 2020 pada 18.17
+-- Waktu pembuatan: 27 Des 2020 pada 11.53
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 7.4.13
 
@@ -91,7 +91,8 @@ CREATE TABLE `header_transaksi` (
 INSERT INTO `header_transaksi` (`id_header_transaksi`, `id_user`, `id_pelanggan`, `nama_pelanggan1`, `email`, `telepon`, `alamat`, `kode_transaksi`, `tanggal_transaksi`, `jumlah_transaksi`, `status_bayar`, `jumlah_bayar`, `rekening_pembayaran`, `rekening_pelanggan`, `bukti_bayar`, `id_rekening`, `tanggal_bayar`, `nama_bank`, `tanggal_post`, `tanggal_update`) VALUES
 (8, 0, 15, 'Gunawan', 'gunawan@gmail.com', '091234567890', 'Jl Mastrip 5 Gunungsari Umbulsari Jember', '22122020FCL7Z0V2', '2020-12-22 00:00:00', 110000, 'Success', 110000, '0123909111', 'Wahyu', '5677080_cf2ef623-8e05-4c90-80ec-0a6edb107d3e_648_648.jpg', 1, '23-12-2020', 'BRI', '2020-12-22 19:12:18', '2020-12-23 16:23:30'),
 (9, 8, 15, 'Fuad', 'fuad@fuad.com', '0123456', 'Jl. Mawar 70 Umbulsari Jember', '23122020CHUTEH4S', '2020-12-23 00:00:00', 100000, 'Success', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-23 15:13:03', '2020-12-23 16:46:26'),
-(10, 0, 15, 'Wahyu', 'wahyu@gmail.com', '085816908859', '                Jl. Umbulsari - Semboro 58 Jember                ', '23122020T5OENPZ3', '2020-12-23 00:00:00', 100000, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-23 17:13:15', '2020-12-23 16:13:15');
+(10, 0, 15, 'Wahyu', 'wahyu@gmail.com', '085816908859', '                Jl. Umbulsari - Semboro 58 Jember                ', '23122020T5OENPZ3', '2020-12-23 00:00:00', 100000, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-23 17:13:15', '2020-12-23 16:13:15'),
+(12, 0, 15, 'Uqon', 'uqon@gmail.com', '085816908859', 'Jl. Semboro 58 Jember                ', '27122020YMCPKZHZ', '2020-12-27 00:00:00', 500000, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-12-27 11:17:32', '2020-12-27 10:17:32');
 
 --
 -- Trigger `header_transaksi`
@@ -184,7 +185,9 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `status_pelanggan`, `nama_pelanggan`, `email`, `password`, `telepon`, `alamat`, `tanggal_daftar`, `tanggal_update`) VALUES
-(15, 0, 'Pending', 'Wahyu', 'wahyu@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '085816908859', 'Jl. Umbulsari - Semboro 58 Jember                ', '2020-12-22 12:11:06', '2020-12-22 18:11:06');
+(15, 8, 'Aktif', 'Wahyu', 'wahyu@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '085816908859', 'Jl. Umbulsari - Semboro 58 Jember                ', '2020-12-27 06:25:42', '2020-12-27 06:25:42'),
+(16, 8, 'Aktif', 'Indira', 'indira@yahoo.com', '8cb2237d0679ca88db6464eac60da96345513964', '091', 'Jl. Semeru Jember                ', '2020-12-27 06:49:28', '2020-12-27 06:49:28'),
+(17, 8, 'Pending', 'Nia', 'nia@nia.com', '8cb2237d0679ca88db6464eac60da96345513964', '0111', 'Jember                ', '2020-12-27 08:24:17', '2020-12-27 08:24:17');
 
 -- --------------------------------------------------------
 
@@ -217,7 +220,7 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id_produk`, `id_user`, `id_kategori`, `kode_produk`, `nama_produk`, `slug_produk`, `keterangan`, `keywords`, `harga`, `stok`, `gambar`, `berat`, `ukuran`, `status_produk`, `tanggal_post`, `tanggal_update`) VALUES
 (13, 8, 5, 'JP001', 'Jumper Hoodie Kuning', 'jumper-hoodie-kuning-jp001', '<p>Jumper Hoodie Pria</p>\r\n', NULL, 100000, 10, '20200825152510_IMG_0121-01.jpeg', 1000, '10x10', 'Publish', '2020-12-21 09:40:00', '2020-12-21 08:40:01'),
-(14, 8, 5, 'JP002', 'Jumper Hoodie Baby Blue', 'jumper-hoodie-baby-blue-jp002', '<p>Jumper Hoodie Baby Blue</p>\r\n', NULL, 100000, 10, '20200825153658_IMG_0132-01.jpeg', 1000, '10x10', 'Publish', '2020-12-21 09:40:00', '2020-12-21 08:40:53'),
+(14, 8, 5, 'JP002', 'Jumper Hoodie Baby Blue', 'jumper-hoodie-baby-blue-jp002', '<p>Jumper Hoodie Baby Blue</p>\r\n', NULL, 100000, 5, '20200825153658_IMG_0132-01.jpeg', 1000, '10x10', 'Publish', '2020-12-21 09:40:00', '2020-12-27 10:17:32'),
 (15, 8, 5, 'JP003', 'Jumper Hoodie Hitam', 'jumper-hoodie-hitam-jp003', '<p>Jumper Hoodie</p>\r\n', NULL, 100000, 10, '20200825161357_IMG_0181-01.jpeg', 1000, '10x10', 'Publish', '2020-12-21 09:41:00', '2020-12-21 08:41:45'),
 (16, 8, 7, 'JJ001', 'Jaket Jeans Mocca', 'jaket-jeans-mocca-jj001', '<p>Jaket Jeans</p>\r\n', NULL, 110000, 10, 'IMG_20201006_131047-01.jpeg', 1000, '10x10', 'Publish', '2020-12-21 09:43:00', '2020-12-21 08:43:21'),
 (17, 8, 7, 'JJ002', 'Jaket Jeans  Biru', 'jaket-jeans-biru-jj002', '<p>Jaket Jeans</p>\r\n', NULL, 110000, 1000, 'IMG_20201006_123051-01.jpeg', 1000, '10x10', 'Publish', '2020-12-21 09:44:00', '2020-12-21 08:44:06');
@@ -270,7 +273,20 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_pelanggan`, `kode_transaksi`, `id_produk`, `harga`, `jumlah`, `total_harga`, `tanggal_transaksi`, `tanggal_update`) VALUES
 (9, 0, 15, '22122020FCL7Z0V2', 16, 110000, 1, 110000, '2020-12-22 00:00:00', '2020-12-22 18:12:18'),
 (10, 8, 15, '23122020CHUTEH4S', 13, 100000, 1, 100000, '2020-12-23 00:00:00', '2020-12-23 16:46:26'),
-(11, 0, 15, '23122020T5OENPZ3', 14, 100000, 1, 100000, '2020-12-23 00:00:00', '2020-12-23 16:13:15');
+(11, 0, 15, '23122020T5OENPZ3', 14, 100000, 1, 100000, '2020-12-23 00:00:00', '2020-12-23 16:13:15'),
+(13, 0, 15, '27122020YMCPKZHZ', 14, 100000, 5, 500000, '2020-12-27 00:00:00', '2020-12-27 10:17:32');
+
+--
+-- Trigger `transaksi`
+--
+DELIMITER $$
+CREATE TRIGGER `barang_after_checkout` AFTER INSERT ON `transaksi` FOR EACH ROW UPDATE produk
+SET
+stok = stok-NEW.jumlah
+WHERE
+id_produk = new.id_produk
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -384,7 +400,7 @@ ALTER TABLE `gambar`
 -- AUTO_INCREMENT untuk tabel `header_transaksi`
 --
 ALTER TABLE `header_transaksi`
-  MODIFY `id_header_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_header_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -402,7 +418,7 @@ ALTER TABLE `konfigurasi`
 -- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
@@ -420,7 +436,7 @@ ALTER TABLE `rekening`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

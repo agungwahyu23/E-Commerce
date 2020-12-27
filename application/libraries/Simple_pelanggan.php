@@ -15,7 +15,7 @@ class Simple_pelanggan
     //Fungsi login
     public function login($email, $password)
     {
-        $check = $this->CI->pelanggan_model->login($email, $password);
+        $check = $this->CI->pelanggan_model->login($email, $password, $status_pelanggan="Aktif");
         //jika ada data maka buat session
         if ($check) {
             $id_pelanggan        = $check->id_pelanggan;

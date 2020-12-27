@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td>Jumlah Bayar</td>
-                                <td>: Rp. <?php echo number_format($header_transaksi->jumlah_bayar,'0',',','.') 
+                                <td>: Rp. <?php echo number_format($header_transaksi->jumlah_transaksi,'0',',','.') 
                                 ?></td>
                             </tr>
                             <tr>

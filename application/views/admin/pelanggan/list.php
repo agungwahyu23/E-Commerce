@@ -32,8 +32,13 @@ if ($this->session->flashdata('sukses')) {
             <td><?= $pelanggan->telepon ?></td>
 			<td><?= $pelanggan->alamat ?></td>
 			<td>
+				<a href="<?= base_url('admin/pelanggan/detail/'.$pelanggan->id_pelanggan) ?>" class="btn btn-success btn-xs"><i class="fa fa-trash-o"></i>Detail</a>
+				<?php include('delete.php') ?>
 
-				<a href="<?= base_url('admin/pelanggan/delete/'.$pelanggan->id_pelanggan) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i>Hapus</a>
+				<?php include('aktif.php')?>
+
+				
+
 			</td>
 
 		</tr>

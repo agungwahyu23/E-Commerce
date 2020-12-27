@@ -1,9 +1,9 @@
 <!-- Blog -->
-<section class="blog bgwhite p-t-94 p-b-65">
+<section class="blog bgwhite p-t-5 p-b-65">
 <div class="container">
 <div class="sec-title p-b-52">
 <h3 class="m-text5 t-center">
-Our Blog
+Info Swipo
 </h3>
 </div>
 

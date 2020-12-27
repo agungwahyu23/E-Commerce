@@ -21,8 +21,16 @@
           <!-- MENU DASHBOARD -->
           <li class="nav-item">
             <a href="<?= base_url('admin/dasbor') ?>" class="nav-link">
-              <i class="nav-icon fas fa-dashboard text-aqua"></i>
+              <i class="nav-icon fas fa-tachometer-alt text-aqua"></i>
               <p>DASHBOARD</p>
+            </a>
+          </li>
+
+          <!-- Menu Berita -->
+          <li class="nav-item">
+            <a href="<?= base_url('admin/berita') ?>" class="nav-link">
+              <i class="nav-icon fas fa-book text-aqua"></i>
+              <p>BERITA</p>
             </a>
           </li>
 
@@ -76,7 +84,7 @@
           <!-- MENU USER -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-lock"></i>
+              <i class="nav-icon fa fa-user"></i>
               <p>
                 PENGGUNA
                 <i class="right fas fa-angle-left"></i>
@@ -101,9 +109,9 @@
       <!-- MENU Pelanggan -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-lock"></i>
+              <i class="nav-icon fa fa-users"></i>
               <p>
-                PELANGGAN
+                RESELLER
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -111,9 +119,11 @@
               <li class="nav-item">
                 <a href="<?= base_url('admin/pelanggan') ?>" class="nav-link">
                   <i class="nav-icon fa fa-table"></i>
-                  <p>Data Pelanggan</p>
+                  <p>Data Reseller</p>
                 </a>
               </li>
+            </ul>
+          </li>
 
           <!-- Menu Konfogurasi-->
           <li class="nav-item has-treeview">

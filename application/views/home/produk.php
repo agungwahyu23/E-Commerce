@@ -59,6 +59,10 @@ Produk Terbaru
 <span class="block2-price m-text6 p-r-5">
 IDR <?php echo number_format($produk->harga,'0',',','.') ?>
 </span>
+<br>
+<span>
+Stok: <?php echo $produk->stok ?>
+</span>
 </div>
 </div>
 
