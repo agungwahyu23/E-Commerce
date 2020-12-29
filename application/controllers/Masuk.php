@@ -30,7 +30,7 @@ class Masuk extends CI_Controller
         $data = array(  'title'     => 'Login Pelanggan',
                         'isi'       => 'masuk/list'
                      );
-        $this->load->view('layout/wrapper', $data, FALSE);
+        $this->load->view('layout/wrapper2', $data, FALSE);
     }
 
     //logout

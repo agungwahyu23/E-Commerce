@@ -6,7 +6,7 @@
 <div class="pos-relative">
 <div class="bgwhite">
 
-
+<h1><?php echo $title ?> </h1><hr>
 
 <div class="clearfix"></div>
 <br><br>

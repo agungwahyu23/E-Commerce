@@ -38,7 +38,7 @@ class Registrasi extends CI_Controller {
         $data = array( 'title' => 'Registrasi Pelanggan',
                         'isi'  => 'registrasi/list'
                     );
-        $this->load->view('layout/wrapper', $data, FALSE);
+        $this->load->view('layout/wrapper2', $data, FALSE);
         //masuk databese
     }else{
         $i = $this->input;
@@ -67,6 +67,6 @@ class Registrasi extends CI_Controller {
         $data = array(  'title'    => 'Registrasi berhasil',
                         'isi'      => 'registrasi/sukses'
                     );
-        $this->load->view('layout/wrapper', $data, FALSE);
+        $this->load->view('layout/wrapper2', $data, FALSE);
     }
 }
