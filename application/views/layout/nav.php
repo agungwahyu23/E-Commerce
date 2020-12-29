@@ -22,7 +22,7 @@ $nav_produk_mobile		= $this->konfigurasi_model->nav_produk();
 
 				<!-- Home -->
 				<li>
-					<a href="<?php echo base_url() ?>">Beranda</a>
+					<a href="<?php echo base_url('home') ?>">Beranda</a>
 				</li>
 
 				<!-- Menu Produk dan Kategori -->
