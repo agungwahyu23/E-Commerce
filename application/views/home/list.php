@@ -11,7 +11,7 @@ include('slider.php');
 include('produk.php');
 
 //load berita
-include('berita.php');
+//include('berita.php');
 
 ?>
 

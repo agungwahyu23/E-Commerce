@@ -1,6 +1,6 @@
 
 <p>
-	<a href="<?= base_url('admin/kategori/tambah') ?>" class="btn btn-success btn-lg">
+	<a href="<?= base_url('admin/berita/tambah') ?>" class="btn btn-success btn-lg">
 		<i class="fa fa-plus"></i> Tambah Baru
 	</a>
 </p>
@@ -21,23 +21,27 @@ if ($this->session->flashdata('sukses')) {
 	<thead>
 		<tr>
 			<th>NO</th>
-			<th>NAMA</th>
-			<th>SLUG</th>
-			<th>URUTAN</th>
+			<th>GAMBAR</th>
+			<th>JENIS BERITA</th>
+			<th>JUDUL BERITA</th>
+			<th>STATUS BERITA</th>
 			<th>ACTION</th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php $no=1; foreach($kategori as $kategori){ ?>
+		<?php $no=1; foreach($berita as $berita){ ?>
 		<tr>
 			<td><?= $no++ ?></td>
-			<td><?= $kategori->nama_kategori ?></td>
-			<td><?= $kategori->slug_kategori ?></td>
-			<td><?= $kategori->urutan ?></td>
 			<td>
-				<a href="<?= base_url('admin/kategori/edit/'.$kategori->id_kategori) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Edit</a>
+				<img src="<?php echo base_url('assets/upload/image/thumbs/'.$berita->gambar) ?>" class="img img responsive img thumbnail" width="60">
+			</td>
+			<td><?= $berita->jenis_berita ?></td>
+			<td><?= $berita->judul_berita ?></td>
+			<td><?= $berita->status_berita ?></td>
+			<td>
+				<a href="<?= base_url('admin/berita/edit/'.$berita->id_berita) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i>Edit</a>
 
-				<a href="<?= base_url('admin/kategori/delete/'.$kategori->id_kategori) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i>Hapus</a>
+				<a href="<?= base_url('admin/berita/delete/'.$berita->id_berita) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i>Hapus</a>
 			</td>
 
 		</tr>
