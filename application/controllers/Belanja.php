@@ -50,6 +50,7 @@ class Belanja extends CI_Controller{
 	// checkout
 	public function checkout()
 	{
+		date_default_timezone_set('Asia/Jakarta');
 		//cek pelanggan  sudah login/belum, jika belum maka harus registrasi sekaligus login, dengan sessionn email
 
 	//kondisi sudah login
@@ -86,7 +87,8 @@ class Belanja extends CI_Controller{
 							'telepon'           =>  $i->post('telepon'),
 							'alamat'            =>  $i->post('alamat'),
 							'kode_transaksi'	=>  $i->post('kode_transaksi'),
-							'tanggal_transaksi' =>  $i->post('tanggal_transaksi'),
+							'tanggal_transaksi' =>  date('Y-m-d H:i:s'),
+							'batas_bayar'		=>  date('Y-m-d H:i:s', mktime( date('H') + 1, date('i'), date('s'), date('m'), date('d'), date('Y'))),
 							'jumlah_transaksi'  =>  $i->post('jumlah_transaksi'),
 							'status_bayar'		=>  'Belum',
 							'tanggal_post'      =>  date('Y-m-d H:i:s')
@@ -103,7 +105,7 @@ class Belanja extends CI_Controller{
 								'harga'				=> $keranjang['price'],
 								'jumlah'			=> $keranjang['qty'],
 								'total_harga'		=> $sub_total,
-								'tanggal_transaksi' => $i->post('tanggal_transaksi')
+								'tanggal_transaksi' => date('Y-m-d H:i:s')
 						);
 			$this->transaksi_model->tambah($data);
 			}

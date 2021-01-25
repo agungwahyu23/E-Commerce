@@ -27,12 +27,12 @@
           </li>
 
           <!-- Menu Berita -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?= base_url('admin/berita') ?>" class="nav-link">
               <i class="nav-icon fas fa-book text-aqua"></i>
               <p>BERITA</p>
             </a>
-          </li>
+          </li> -->
 
           <!-- MENU TRANSAKSI -->
           <li class="nav-item">

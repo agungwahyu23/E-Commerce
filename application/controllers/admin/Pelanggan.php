@@ -64,5 +64,15 @@ class Pelanggan extends CI_Controller{
 
         
     }
+
+    //Delete pelanggan
+    public function delete($id_pelanggan)
+    {
+        $pelanggan = $this->pelanggan_model->detail($id_pelanggan);
+        $data = array('id_pelanggan' => $id_pelanggan);
+        $this->pelanggan_model->delete($data);
+        $this->session->set_flashdata('sukses', 'Data berhasil dihapus');
+        redirect(base_url('admin/pelanggan'),'refresh');
+    }
 }
 ?>

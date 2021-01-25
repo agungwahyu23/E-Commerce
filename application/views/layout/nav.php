@@ -168,23 +168,27 @@ $keranjang	= $this->cart->contents();
 	<div class="btn-show-menu">
 		<!-- Header Icon mobile -->
 		<div class="header-icons-mobile">
-			<a href="#" class="header-wrapicon1 dis-block">
+			<?php if($this->session->userdata('email')){ ?>
+			<a href="<?php echo base_url('dasbor') ?>" class="header-wrapicon1 dis-block">
 				<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-01.png" class="header-icon1"
 					alt="ICON">
 			</a>
+			<?php }else{ ?>
+
+			<a href="<?php echo base_url('registrasi') ?>" class="header-wrapicon1 dis-block">
+			<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-01.png" class="header-icon1"
+				alt="ICON">
+			</a>
+			<?php } ?>
 
 			<span class="linedivide2"></span>
 
 			<div class="header-wrapicon2">
 
-				<?php
+			<?php
 //check data belanjaan ada atau tidak
-
-$keranjang_mobile	= $this->cart->contents();
-
-
-
-?>
+			$keranjang_mobile	= $this->cart->contents();
+			?>
 				<img src="<?php echo base_url() ?>assets/template/images/icons/icon-header-02.png"
 					class="header-icon1 js-show-header-dropdown" alt="ICON">
 				<span class="header-icons-noti"><?php echo count($keranjang_mobile) ?> </span>
@@ -192,7 +196,6 @@ $keranjang_mobile	= $this->cart->contents();
 				<!-- Header cart noti -->
 				<div class="header-cart header-dropdown">
 					<ul class="header-cart-wrapitem">
-
 
 						<?php
 		// kalo gaada keranjang belanja

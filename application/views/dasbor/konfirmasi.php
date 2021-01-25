@@ -81,10 +81,12 @@
                                 </td>
                             </tr>
                         <tbody>
+                            
                             <tr>
                                 <td>Tanggal Bayar</td>
                                 <td>
-                                <input type="text" name="tanggal_bayar" class="form-control" placeholder="dd-mm-yyy" value="<?php if(isset($_POST['tanggal_bayar'])) { echo set_value('tanggal_bayar'); }elseif($header_transaksi->tanggal_bayar!=""){ echo $header_transaksi->tanggal_bayar; }else{ echo date('d-m-Y'); } ?>">
+                                <input type="date" name="tanggal_bayar" class="form-control" placeholder="dd-mm-yyy" value="<?php if(isset($_POST['tanggal_bayar'])) { echo set_value(date('d-m-Y H:i:s')); }elseif($header_transaksi->tanggal_bayar!=""){ echo $header_transaksi->tanggal_bayar; }else{ echo date('m-d-Y'); } ?>">
+                                <small>tanggal/bulan/tahun</small>
                                 </td>
                             </tr>
                             <tr>

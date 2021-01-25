@@ -22,7 +22,7 @@ $site = $this->konfigurasi_model->listing();
         <meta name="description" content="<?php echo $title ?>, <?php echo $site->deskripsi ?>">
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/vendor/bootstrap/css/bootstrap.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -51,6 +51,11 @@ $site = $this->konfigurasi_model->listing();
 <!--===============================================================================================-->
 
 <style type="text/css">
+	.t-cart{
+		font-family : Montserrat-Regular, sans-serif;
+		font-size :11pt;
+	}
+
 	.pagination a, .pagination b {
 
 		padding: 10px 20px;
