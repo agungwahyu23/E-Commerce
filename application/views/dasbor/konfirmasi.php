@@ -32,7 +32,11 @@
                         <tbody>
                             <tr>
                                 <td>Tanggal</td>
-                                <td>: <?php echo date('d-m-Y',strtotime($header_transaksi->tanggal_transaksi)) ?></td>
+                                <td>: <?php echo date('d-m-Y - H:i:s',strtotime($header_transaksi->tanggal_transaksi)) ?></td>
+                            </tr>
+                            <tr>
+                                <td>Batas Bayar</td>
+                                <td>: <?php echo date('d-m-Y - H:i:s',strtotime($header_transaksi->batas_bayar)) ?></td>
                             </tr>
                             <tr>
                                 <td>Jumlah</td>
