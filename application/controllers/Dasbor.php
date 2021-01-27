@@ -24,6 +24,13 @@ class Dasbor extends CI_Controller
         //ambil data login id_pelanggan
         $id_pelanggan = $this->session->userdata('id_pelanggan');
         $header_transaksi = $this->header_transaksi_model->pelanggan($id_pelanggan);
+        $header_trans = $this->header_transaksi_model->kode_transaksi($kode_transaksi);
+        $trans = $this->transaksi_model->kode_transaksi($kode_transaksi);
+
+        // if ($header_trans->batas_bayar >= $header_trans->tanggal_transaksi) {
+        //     $data = array (     'id_produk'     => $this->input->post($trans->);
+        //                 );
+        // }
 
         $data = array(  'title'              => 'Halaman Dasbor Pelanggan',
                         'header_transaksi'   => $header_transaksi,
