@@ -67,10 +67,15 @@ if ($this->session->flashdata('sukses')) {
 	</div>
 </div>
 <div class="form-group row">
-	<label class="col-md-2 col-form-label control-label">Alamat Kantor</label>
+	<label class="col-md-2 col-form-label control-label">Provinsi</label>
 	<div class="col-md-10">
-	<input type="text" name="alamat" class="form-control" placeholder="Alamat Kantor"
-			value="<?php echo $konfigurasi->alamat ?>" required>
+	<select name="provinsi" class="form-control"></select>
+	</div>
+</div>
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Kota</label>
+	<div class="col-md-10">
+	<select name="kota" class="form-control"></select>
 	</div>
 </div>
 <div class="form-group row">
@@ -117,3 +122,25 @@ if ($this->session->flashdata('sukses')) {
 
 					
 <?php echo form_close(); ?>
+
+<script>
+	// $(document).ready(function () {
+	// 	$.ajax({
+	// 		type : "POST",
+	// 		url : "<?= base_url('admin/rajaongkir/provinsi') ?>",
+	// 		success : function (hasil_provinsi) {
+	// 			console.log(hasil_provinsi);
+	// 		}
+	// 	})
+	// })
+
+	
+    $( document ).ready(function() {
+        console.log( "document loaded" );
+    });
+ 
+    $( window ).on( "load", function() {
+        console.log( "window loaded" );
+    });
+    
+</script>

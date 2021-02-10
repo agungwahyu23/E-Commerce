@@ -76,6 +76,13 @@ class Header_transaksi_model extends CI_Model{
         return $query->row();
     }
 
+    //stokkembali
+    public function kembalikanstok($kode_transaksi, $data)
+    {
+        $this->db->insert('produk', $data);
+        $this->db->where('transaksi.kode_transaksi', $kode_transaksi);
+    }
+
     //tambah
     public function tambah($data)
     {

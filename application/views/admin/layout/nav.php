@@ -35,11 +35,28 @@
           </li> -->
 
           <!-- MENU TRANSAKSI -->
-          <li class="nav-item">
-            <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
-              <i class="nav-icon fas fa-check text-aqua"></i>
-              <p>TRANSAKSI</p>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-check text-aqu"></i>
+              <p>
+                TRANSAKSI
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-table"></i>
+                  <p>TRANSAKSI AKTIF</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('admin/transaksi') ?>" class="nav-link">
+                  <i class="nav-icon fa fa-table"></i>
+                  <p>TRANSAKSI EXPIERT</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <!-- MENU PRODUK -->

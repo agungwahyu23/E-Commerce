@@ -24,13 +24,6 @@ class Dasbor extends CI_Controller
         //ambil data login id_pelanggan
         $id_pelanggan = $this->session->userdata('id_pelanggan');
         $header_transaksi = $this->header_transaksi_model->pelanggan($id_pelanggan);
-        $header_trans = $this->header_transaksi_model->kode_transaksi($kode_transaksi);
-        $trans = $this->transaksi_model->kode_transaksi($kode_transaksi);
-
-        // if ($header_trans->batas_bayar >= $header_trans->tanggal_transaksi) {
-        //     $data = array (     'id_produk'     => $this->input->post($trans->);
-        //                 );
-        // }
 
         $data = array(  'title'              => 'Halaman Dasbor Pelanggan',
                         'header_transaksi'   => $header_transaksi,
@@ -50,6 +43,20 @@ class Dasbor extends CI_Controller
                         'isi'                => 'dasbor/belanja'
                     );
         $this->load->view('layout/wrapper', $data, FALSE);
+    }
+
+    //stok kembali
+    public function kembalistok($kode_transaksi)
+    {
+        $header_transaksi = $this->header_transaksi_model->kode_transaksi($kode_transaksi);
+        $stok_trans = $header_transaksi->jumlah;
+
+        if ($header_transaksi->batas_bayar <= $header_transaksi->tanggal_transaksi) {
+            $i = $this->input;
+
+            $data = array ( 'stok'  => $stok_trans);
+            $this->header_transaksi_model->kembalikanstok($kode_transaksi, $data);
+        }
     }
 
     //Detail
@@ -128,6 +135,8 @@ class Dasbor extends CI_Controller
     }
     //end masuk database
     }
+
+    
 
     //konfirmasi pembayaran
     public function konfirmasi($kode_transaksi)
